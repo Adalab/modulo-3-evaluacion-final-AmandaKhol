@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import '../stylesheets/layout/_page.scss';
 import getDataFromApi from '../services/getDataFromApi';
 import rym from '../images/rym.png';
-import Filter from './Filter';
-import CharacterList from './CharacterList';
+
 import CharacterDetail from './CharacterDetail';
+import Browser from './Browser';
+import { Route, Switch } from 'react-router-dom';
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
@@ -12,7 +13,12 @@ const App = () => {
   const [detailCharacter, setDetailCharacter] = useState({});
 
   useEffect(() => {
-    getDataFromApi().then((data) => setCharacters(data));
+    getDataFromApi().then((data) => {
+      const orderedData = data.sort((a, b) =>
+        a.name > b.name ? 1 : a.name < b.name ? -1 : 0
+      );
+      return setCharacters(orderedData);
+    });
   }, []);
 
   const handleSelect = (inputCharacter) => {
@@ -31,6 +37,21 @@ const App = () => {
   const filterCharacters = characters.filter((character) =>
     character.name.toLowerCase().includes(characterSelect.toLowerCase())
   );
+
+  const renderBrowser = () => {
+    return (
+      <Browser
+        handleSelect={handleSelect}
+        characters={filterCharacters}
+        handleDetailCharacter={handleDetailCharacter}
+      />
+    );
+  };
+
+  const renderCharacter = (props) => {
+    return <CharacterDetail character={detailCharacter} />;
+  };
+
   return (
     <>
       <header className="page__header">
@@ -42,12 +63,10 @@ const App = () => {
         />
       </header>
       <main className="main">
-        <Filter handleSelect={handleSelect} />
-        <CharacterList
-          characters={filterCharacters}
-          handleDetailCharacter={handleDetailCharacter}
-        />
-        <CharacterDetail character={detailCharacter} />
+        <Switch>
+          <Route exact path="/" render={renderBrowser} />
+          <Route path="/character/:id" render={renderCharacter} />
+        </Switch>
       </main>
     </>
   );

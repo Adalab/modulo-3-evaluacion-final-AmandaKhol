@@ -5,9 +5,12 @@ const Filter = (props) => {
   const handleChange = (ev) => {
     return props.handleSelect(ev.target.value);
   };
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+  };
   return (
     <div>
-      <form className="form" action="">
+      <form className="form" action="" onSubmit={handleSubmit}>
         <label htmlFor="character"></label>
         <input
           className="form__input"
