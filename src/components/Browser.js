@@ -1,6 +1,7 @@
 import React from 'react';
 import Filter from './Filter';
 import CharacterList from './CharacterList';
+import '../stylesheets/components/_browser.scss';
 
 const Browser = (props) => {
   const renderCharacterList = () => {
@@ -10,9 +11,9 @@ const Browser = (props) => {
         handleDetailCharacter={props.handleDetailCharacter}
       />
     ) : (
-      <p>
+      <p className="warning">
         No hay ningún personaje que coincida con la palabra:
-        <span> {props.characterSelect}</span>
+        <span className="warning__span"> {props.inputValue}</span>
       </p>
     );
   };

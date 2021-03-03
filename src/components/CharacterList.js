@@ -1,6 +1,6 @@
 import React from 'react';
 import CharacterCard from './CharacterCard';
-import '../stylesheets/layout/_character-list.scss';
+import '../stylesheets/components/_character-list.scss';
 
 const CharacterList = (props) => {
   const characterElements = () => {
@@ -17,8 +17,8 @@ const CharacterList = (props) => {
   };
 
   return (
-    <div>
-      <ul className="character__list">{characterElements()}</ul>
+    <div className="characters">
+      <ul className="characters__list">{characterElements()}</ul>
     </div>
   );
 };
