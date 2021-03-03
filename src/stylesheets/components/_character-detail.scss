@@ -1,0 +1,20 @@
+@import '../core/core';
+
+.detail {
+  width: 300px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  background-color: $color-secondary;
+  color: $color-font-selected;
+  padding: 8px;
+  margin: 8px 8px;
+  &__info {
+    padding: 5px;
+  }
+  &__photo {
+    width: 150px;
+  }
+}

@@ -1,0 +1,29 @@
+@import '../core/core';
+.character__item {
+  width: 180px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  background-color: $color-secondary;
+  color: $color-font-selected;
+  padding: 8px;
+  margin: 8px 8px;
+  &--header {
+    border-top: 1px solid $color-bg;
+    width: 100%;
+  }
+  &--title {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 10px;
+    text-align: center;
+  }
+  &--image {
+    height: 150px;
+    width: auto;
+    border-radius: 5px;
+  }
+}
