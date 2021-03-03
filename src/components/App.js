@@ -5,6 +5,8 @@ import rym from '../images/rym.png';
 
 import CharacterDetail from './CharacterDetail';
 import Browser from './Browser';
+import PageNotFound from './PageNotFound';
+import CharacterNotFound from './CharacterNotFound';
 import { Route, Switch } from 'react-router-dom';
 
 const App = () => {
@@ -48,8 +50,16 @@ const App = () => {
     );
   };
 
-  const renderCharacter = (props) => {
-    return <CharacterDetail character={detailCharacter} />;
+  const renderCharacter = (routerProps) => {
+    const routerCharacterId = routerProps.match.params.id;
+    const characterFound = characters.find(
+      (character) => character.id === parseInt(routerCharacterId)
+    );
+    if (characterFound) {
+      return <CharacterDetail character={characterFound} />;
+    } else {
+      return <CharacterNotFound />;
+    }
   };
 
   return (
@@ -66,6 +76,9 @@ const App = () => {
         <Switch>
           <Route exact path="/" render={renderBrowser} />
           <Route path="/detail/:id" render={renderCharacter} />
+          <Route>
+            <PageNotFound />
+          </Route>
         </Switch>
       </main>
     </>

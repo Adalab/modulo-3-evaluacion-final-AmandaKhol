@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: center;
   padding: 15px;
   background-color: $color-bg;
   color: $color-font;
@@ -17,5 +18,17 @@
     &--image {
       width: 250px;
     }
+  }
+}
+.content__warning {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &--message {
+    font-size: 20px;
+  }
+  &--span {
+    font-weight: bold;
   }
 }

@@ -11,10 +11,12 @@ const Browser = (props) => {
         handleDetailCharacter={props.handleDetailCharacter}
       />
     ) : (
-      <p className="warning">
-        No hay ningún personaje que coincida con la palabra:
-        <span className="warning__span"> {props.inputValue}</span>
-      </p>
+      <div className="content__warning">
+        <p className="content__warning--message">
+          No hay ningún personaje que coincida con la palabra:
+          <span className="content__warning--span"> {props.inputValue}</span>
+        </p>
+      </div>
     );
   };
 
