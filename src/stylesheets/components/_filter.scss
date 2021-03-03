@@ -1,3 +1,4 @@
+@import '../core/core';
 .form {
   height: 100px;
   box-sizing: border-box;
@@ -7,7 +8,13 @@
   justify-content: center;
   align-items: center;
   &__input {
+    color: $color-font;
+    background: $color-bg;
+    border: 2px solid $color-secondary;
     width: 280px;
     height: 20px;
+  }
+  &__input:focus {
+    outline: none;
   }
 }
