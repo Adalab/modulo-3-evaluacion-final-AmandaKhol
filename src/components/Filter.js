@@ -16,6 +16,7 @@ const Filter = (props) => {
           className="form__input"
           id="character"
           type="text"
+          value={props.inputValue}
           onChange={handleChange}
         />
       </form>

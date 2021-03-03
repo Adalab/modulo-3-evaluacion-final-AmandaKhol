@@ -9,7 +9,7 @@ const CharacterCard = (props) => {
 
   return (
     <Link
-      to={`/character/${props.character.id}`}
+      to={`/detail/${props.character.id}`}
       className="character__item"
       onClick={handleClick}
     >

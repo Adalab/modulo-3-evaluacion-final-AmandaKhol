@@ -29,7 +29,6 @@ const App = () => {
     const detailCharacterSelected = characters.find(
       (character) => character.id === idCharacter
     );
-    console.log(detailCharacterSelected);
 
     setDetailCharacter(detailCharacterSelected);
   };
@@ -41,6 +40,7 @@ const App = () => {
   const renderBrowser = () => {
     return (
       <Browser
+        inputValue={characterSelect}
         handleSelect={handleSelect}
         characters={filterCharacters}
         handleDetailCharacter={handleDetailCharacter}
@@ -65,7 +65,7 @@ const App = () => {
       <main className="main">
         <Switch>
           <Route exact path="/" render={renderBrowser} />
-          <Route path="/character/:id" render={renderCharacter} />
+          <Route path="/detail/:id" render={renderCharacter} />
         </Switch>
       </main>
     </>
