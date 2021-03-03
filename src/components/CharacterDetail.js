@@ -5,16 +5,38 @@ import { Link } from 'react-router-dom';
 const CharacterDetail = (props) => {
   return (
     <section className="detail">
-      <Link className="detail__card--return" to="/">
-        Volver
+      <Link className="detail__return" to="/">
+        <i class="detail__return--icon fas fa-angle-left"></i> Volver
       </Link>
       <div className="detail__card">
         <div className="detail__card--info">
           <h3>{props.character.name}</h3>
-          <h4>Status: {props.character.status} </h4>
-          <h4>Species: {props.character.species}</h4>
-          <h4>Origin: {props.character.origin}</h4>
-          <h4>Episodes: {props.character.episodes}</h4>
+          <h4>
+            Status:
+            <span className="detail__card--span">
+              {' '}
+              {props.character.status}
+            </span>
+          </h4>
+          <h4>
+            Species:
+            <span className="detail__card--span">
+              {props.character.species}
+            </span>
+          </h4>
+          <h4>
+            Origin:
+            <span className="detail__card--span">
+              {' '}
+              {props.character.origin}
+            </span>
+          </h4>
+          <h4>
+            Episodes:
+            <span className="detail__card--span">
+              {props.character.episodes}
+            </span>
+          </h4>
         </div>
         <img
           className="detail__card--photo"
