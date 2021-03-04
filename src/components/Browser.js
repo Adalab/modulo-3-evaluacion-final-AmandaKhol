@@ -1,15 +1,13 @@
 import React from 'react';
+import '../stylesheets/components/_browser.scss';
+
 import Filter from './Filter';
 import CharacterList from './CharacterList';
-import '../stylesheets/components/_browser.scss';
 
 const Browser = (props) => {
   const renderCharacterList = () => {
     return props.characters.length !== 0 ? (
-      <CharacterList
-        characters={props.characters}
-        handleDetailCharacter={props.handleDetailCharacter}
-      />
+      <CharacterList characters={props.characters} />
     ) : (
       <div className="content__warning">
         <p className="content__warning--message">
@@ -22,7 +20,11 @@ const Browser = (props) => {
 
   return (
     <section className="browser">
-      <Filter handleSelect={props.handleSelect} inputValue={props.inputValue} />
+      <Filter
+        handleSelect={props.handleSelect}
+        inputValue={props.inputValue}
+        species={props.species}
+      />
       {renderCharacterList()}
     </section>
   );

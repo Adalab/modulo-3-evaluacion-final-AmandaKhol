@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import '../stylesheets/layout/_page.scss';
 import getDataFromApi from '../services/getDataFromApi';
 import rym from '../images/rym.png';
@@ -7,12 +8,11 @@ import CharacterDetail from './CharacterDetail';
 import Browser from './Browser';
 import PageNotFound from './PageNotFound';
 import CharacterNotFound from './CharacterNotFound';
-import { Route, Switch } from 'react-router-dom';
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [characterSelect, setCharacterSelect] = useState('');
-  const [detailCharacter, setDetailCharacter] = useState({});
+  const [speciesSelect, setSpeciesSelect] = useState('all');
 
   useEffect(() => {
     getDataFromApi().then((data) => {
@@ -23,32 +23,23 @@ const App = () => {
     });
   }, []);
 
-  const handleSelect = (inputCharacter) => {
-    setCharacterSelect(inputCharacter);
+  const handleSelect = (inputId, inputValue) => {
+    inputId === 'species'
+      ? setSpeciesSelect(inputValue)
+      : setCharacterSelect(inputValue);
   };
 
-  const handleDetailCharacter = (idCharacter) => {
-    const detailCharacterSelected = characters.find(
-      (character) => character.id === idCharacter
+  const speciesList = characters.map((character) => character.species);
+  const speciesListUnique = [...new Set(speciesList)];
+  console.log(speciesListUnique);
+
+  const filterCharacters = characters
+    .filter((character) =>
+      character.name.toLowerCase().includes(characterSelect.toLowerCase())
+    )
+    .filter((character) =>
+      speciesSelect === 'all' ? true : character.species === speciesSelect
     );
-
-    setDetailCharacter(detailCharacterSelected);
-  };
-
-  const filterCharacters = characters.filter((character) =>
-    character.name.toLowerCase().includes(characterSelect.toLowerCase())
-  );
-
-  const renderBrowser = () => {
-    return (
-      <Browser
-        inputValue={characterSelect}
-        handleSelect={handleSelect}
-        characters={filterCharacters}
-        handleDetailCharacter={handleDetailCharacter}
-      />
-    );
-  };
 
   const renderCharacter = (routerProps) => {
     const routerCharacterId = routerProps.match.params.id;
@@ -74,7 +65,14 @@ const App = () => {
       </header>
       <main className="main">
         <Switch>
-          <Route exact path="/" render={renderBrowser} />
+          <Route exact path="/">
+            <Browser
+              inputValue={characterSelect}
+              handleSelect={handleSelect}
+              characters={filterCharacters}
+              species={speciesListUnique}
+            />
+          </Route>
           <Route path="/detail/:id" render={renderCharacter} />
           <Route>
             <PageNotFound />
