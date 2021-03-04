@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../stylesheets/components/_character-detail.scss';
 import { Link } from 'react-router-dom';
-import { isContext } from 'vm';
 
 const CharacterDetail = (props) => {
   const renderIcon = () => {
@@ -16,7 +16,7 @@ const CharacterDetail = (props) => {
   return (
     <section className="detail">
       <Link className="detail__return" to="/">
-        <i class="detail__return--icon fas fa-angle-left"></i> Volver
+        <i className="detail__return--icon fas fa-angle-left"></i> Volver
       </Link>
       <div className="detail__card">
         <div className="detail__card--info">
@@ -59,3 +59,15 @@ const CharacterDetail = (props) => {
 };
 
 export default CharacterDetail;
+
+CharacterDetail.propTypes = {
+  character: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    status: PropTypes.string,
+    origin: PropTypes.string,
+    episodes: PropTypes.number,
+    species: PropTypes.string,
+    photo: PropTypes.string,
+  }),
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../stylesheets/components/_filter.scss';
 
 const Filter = (props) => {
@@ -51,3 +52,9 @@ const Filter = (props) => {
 };
 
 export default Filter;
+
+Filter.propTypes = {
+  handleSelect: PropTypes.func,
+  inputValue: PropTypes.string,
+  species: PropTypes.array,
+};

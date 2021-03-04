@@ -31,7 +31,6 @@ const App = () => {
 
   const speciesList = characters.map((character) => character.species);
   const speciesListUnique = [...new Set(speciesList)];
-  console.log(speciesListUnique);
 
   const filterCharacters = characters
     .filter((character) =>

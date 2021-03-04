@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../stylesheets/components/_character-card.scss';
 import { Link } from 'react-router-dom';
 
@@ -20,3 +21,12 @@ const CharacterCard = (props) => {
 };
 
 export default CharacterCard;
+
+CharacterCard.propTypes = {
+  character: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    species: PropTypes.string,
+    photo: PropTypes.string,
+  }),
+};

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../stylesheets/components/_browser.scss';
+import PropTypes from 'prop-types';
 
 import Filter from './Filter';
 import CharacterList from './CharacterList';
@@ -31,3 +32,10 @@ const Browser = (props) => {
 };
 
 export default Browser;
+
+Browser.propTypes = {
+  inputValue: PropTypes.string,
+  characters: PropTypes.array,
+  handleSelect: PropTypes.func,
+  species: PropTypes.array,
+};
