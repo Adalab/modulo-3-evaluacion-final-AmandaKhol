@@ -6,8 +6,7 @@ import rym from '../images/rym.png';
 
 import CharacterDetail from './CharacterDetail';
 import Browser from './Browser';
-import PageNotFound from './PageNotFound';
-import CharacterNotFound from './CharacterNotFound';
+import Warning from './Warning';
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
@@ -42,14 +41,18 @@ const App = () => {
 
   const renderCharacter = (routerProps) => {
     const routerCharacterId = routerProps.match.params.id;
+    const routerCharacterIdInt = parseInt(routerCharacterId);
+    const routerCharacterIdString = routerCharacterIdInt + '';
     const characterFound = characters.find(
-      (character) => character.id === parseInt(routerCharacterId)
+      (character) => character.id === routerCharacterIdInt
     );
-    if (characterFound) {
-      return <CharacterDetail character={characterFound} />;
-    } else {
-      return <CharacterNotFound />;
-    }
+    return !characterFound ||
+      routerCharacterIdString !== routerCharacterId ||
+      isNaN(routerCharacterIdInt) ? (
+      <Warning warningCode={400} />
+    ) : (
+      <CharacterDetail character={characterFound} />
+    );
   };
 
   return (
@@ -74,7 +77,7 @@ const App = () => {
           </Route>
           <Route path="/detail/:id" render={renderCharacter} />
           <Route>
-            <PageNotFound />
+            <Warning warningCode={404} />
           </Route>
         </Switch>
       </main>

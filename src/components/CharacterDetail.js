@@ -4,10 +4,12 @@ import '../stylesheets/components/_character-detail.scss';
 import { Link } from 'react-router-dom';
 
 const CharacterDetail = (props) => {
+  const { name, species, status, photo, origin, episodes } = props.character;
+
   const renderIcon = () => {
-    if (props.character.status.toLowerCase() === 'alive') {
+    if (status.toLowerCase() === 'alive') {
       return <i className="fas fa-heartbeat"></i>;
-    } else if (props.character.status.toLowerCase() === 'dead') {
+    } else if (status.toLowerCase() === 'dead') {
       return <i className="fas fa-dizzy"> </i>;
     } else {
       return <i className="fas fa-question-circle"> </i>;
@@ -20,38 +22,31 @@ const CharacterDetail = (props) => {
       </Link>
       <div className="detail__card">
         <div className="detail__card--info">
-          <h3>{props.character.name}</h3>
+          <h3>{name}</h3>
           <h4>
             Status:
             <span className="detail__card--span">
-              {props.character.status} - {renderIcon()}
+              {status} - {renderIcon()}
             </span>
           </h4>
           <h4>
             Species:
-            <span className="detail__card--span">
-              {props.character.species}
-            </span>
+            <span className="detail__card--span">{species}</span>
           </h4>
           <h4>
             Origin:
-            <span className="detail__card--span">
-              {' '}
-              {props.character.origin}
-            </span>
+            <span className="detail__card--span"> {origin}</span>
           </h4>
           <h4>
             Episodes:
-            <span className="detail__card--span">
-              {props.character.episodes}
-            </span>
+            <span className="detail__card--span">{episodes}</span>
           </h4>
         </div>
         <img
           className="detail__card--photo"
-          src={props.character.photo}
-          alt={props.character.name + ' photo'}
-          title={props.character.name + ' photo'}
+          src={photo}
+          alt={name + ' photo'}
+          title={name + ' photo'}
         />
       </div>
     </section>

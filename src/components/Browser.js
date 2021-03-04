@@ -4,18 +4,14 @@ import PropTypes from 'prop-types';
 
 import Filter from './Filter';
 import CharacterList from './CharacterList';
+import Warning from './Warning';
 
 const Browser = (props) => {
-  const renderCharacterList = () => {
+  const renderCharacterListOrWarning = () => {
     return props.characters.length !== 0 ? (
       <CharacterList characters={props.characters} />
     ) : (
-      <div className="content__warning">
-        <p className="content__warning--message">
-          No hay ningún personaje que coincida con la palabra:
-          <span className="content__warning--span"> {props.inputValue}</span>
-        </p>
-      </div>
+      <Warning warningCode={204} inputValue={props.inputValue} />
     );
   };
 
@@ -26,7 +22,7 @@ const Browser = (props) => {
         inputValue={props.inputValue}
         species={props.species}
       />
-      {renderCharacterList()}
+      {renderCharacterListOrWarning()}
     </section>
   );
 };
