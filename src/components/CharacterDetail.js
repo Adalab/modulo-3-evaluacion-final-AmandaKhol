@@ -1,8 +1,18 @@
 import React from 'react';
 import '../stylesheets/components/_character-detail.scss';
 import { Link } from 'react-router-dom';
+import { isContext } from 'vm';
 
 const CharacterDetail = (props) => {
+  const renderIcon = () => {
+    if (props.character.status.toLowerCase() === 'alive') {
+      return <i className="fas fa-heartbeat"></i>;
+    } else if (props.character.status.toLowerCase() === 'dead') {
+      return <i className="fas fa-dizzy"> </i>;
+    } else {
+      return <i className="fas fa-question-circle"> </i>;
+    }
+  };
   return (
     <section className="detail">
       <Link className="detail__return" to="/">
@@ -14,8 +24,7 @@ const CharacterDetail = (props) => {
           <h4>
             Status:
             <span className="detail__card--span">
-              {' '}
-              {props.character.status}
+              {props.character.status} - {renderIcon()}
             </span>
           </h4>
           <h4>
