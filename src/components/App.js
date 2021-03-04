@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import '../stylesheets/layout/_page.scss';
+import '../stylesheets/layout/_footer.scss';
 import getDataFromApi from '../services/getDataFromApi';
 import rym from '../images/rym.png';
 
@@ -81,6 +82,9 @@ const App = () => {
           </Route>
         </Switch>
       </main>
+      <footer className="page__footer">
+        <small>Adalab and Amanda Khol &copy; 2021</small>
+      </footer>
     </>
   );
 };

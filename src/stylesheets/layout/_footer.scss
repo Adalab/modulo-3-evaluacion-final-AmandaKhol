@@ -1,0 +1,12 @@
+@import '../core/core';
+
+.page__footer {
+  box-sizing: content-box;
+  font-family: $font-title;
+  font-size: 12px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

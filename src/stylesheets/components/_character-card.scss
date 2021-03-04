@@ -1,4 +1,5 @@
 @import '../core/core';
+
 .character__item {
   text-decoration: none;
   width: 180px;
@@ -8,7 +9,8 @@
   align-items: center;
   background-color: $color-secondary;
   color: $color-font;
-  margin: 8px 8px;
+  justify-self: center;
+
   &--header {
     box-sizing: border-box;
     width: 100%;

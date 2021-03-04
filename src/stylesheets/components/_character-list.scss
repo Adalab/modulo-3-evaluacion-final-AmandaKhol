@@ -1,18 +1,18 @@
 @import '../core/core';
 
 .characters {
-  width: 100%;
+  margin-top: 30px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  &__list {
-    display: grid;
-    grid-template-columns: 1fr;
-    @include tablet() {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    @include desktop() {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
+}
+.characters__list {
+  box-sizing: border-box;
+  width: 100vw;
+  padding: 0 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(186px, 1fr));
+  grid-gap: 10px;
 }

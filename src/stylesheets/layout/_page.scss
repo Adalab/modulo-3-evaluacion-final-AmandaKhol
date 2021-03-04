@@ -1,18 +1,24 @@
 @import '../core/core';
 
 .page {
+  scroll-behavior: smooth;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  padding: 15px;
   background-color: $color-bg;
+  border-color: red;
   color: $color-font;
   font-family: $font-main;
   height: 100%;
   font-size: 13px;
+
   &__header {
+    box-sizing: border-box;
+    padding-top: 30px;
+    height: 130px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     &--image {
@@ -31,4 +37,14 @@
   &--span {
     font-weight: bold;
   }
+}
+
+.main {
+  box-sizing: content-box;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 180px);
+  padding: 0px 15px;
 }

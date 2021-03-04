@@ -8,7 +8,7 @@ const CharacterList = (props) => {
   const characterElements = () => {
     return props.characters.map((character) => {
       return (
-        <li key={character.id}>
+        <li key={character.id} className="character__item">
           <CharacterCard
             character={character}
             handleDetailCharacter={props.handleDetailCharacter}
@@ -19,9 +19,9 @@ const CharacterList = (props) => {
   };
 
   return (
-    <div className="characters">
-      <ul className="characters__list">{characterElements()}</ul>
-    </div>
+    <section className="characters">
+      <ul className="characters__list">{characterElements()} </ul>
+    </section>
   );
 };
 
