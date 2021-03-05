@@ -21,6 +21,7 @@ const Browser = (props) => {
         handleSelect={props.handleSelect}
         inputValue={props.inputValue}
         species={props.species}
+        speciesSelect={props.speciesSelect}
       />
       {renderCharacterListOrWarning()}
     </section>

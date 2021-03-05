@@ -10,7 +10,6 @@
 }
 .characters__list {
   box-sizing: border-box;
-  width: 100vw;
   padding: 0 45px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(186px, 1fr));
