@@ -2,19 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../stylesheets/components/_character-detail.scss';
 import { Link } from 'react-router-dom';
+import getIconSpecies from '../services/getIconSpecies';
+import getIconStatus from '../services/getIconStatus';
 
 const CharacterDetail = (props) => {
   const { name, species, status, photo, origin, episodes } = props.character;
 
-  const renderIcon = () => {
-    if (status.toLowerCase() === 'alive') {
-      return <i className="fas fa-heartbeat"></i>;
-    } else if (status.toLowerCase() === 'dead') {
-      return <i className="fas fa-dizzy"> </i>;
-    } else {
-      return <i className="fas fa-question-circle"> </i>;
-    }
-  };
   return (
     <section className="detail">
       <Link className="detail__return" to="/">
@@ -26,12 +19,14 @@ const CharacterDetail = (props) => {
           <h4>
             Status:
             <span className="detail__card--span">
-              {status} - {renderIcon()}
+              {status} - {getIconStatus(status)}
             </span>
           </h4>
           <h4>
             Species:
-            <span className="detail__card--span">{species}</span>
+            <span className="detail__card--span">
+              {species} - {getIconSpecies(species)}
+            </span>
           </h4>
           <h4>
             Origin:

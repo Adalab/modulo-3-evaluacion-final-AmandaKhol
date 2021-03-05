@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../stylesheets/components/_filter.scss';
+import Reset from './Reset';
 
 const Filter = (props) => {
   const handleChange = (ev) => {
     return props.handleSelect(ev.target.id, ev.target.value);
   };
+
   const handleSubmit = (ev) => {
     ev.preventDefault();
   };
@@ -20,7 +22,7 @@ const Filter = (props) => {
     });
   };
   return (
-    <div>
+    <section className="form-section">
       <form className="form" action="" onSubmit={handleSubmit}>
         <fieldset className="form__fieldset">
           <label htmlFor="character">Search a character:</label>
@@ -48,7 +50,8 @@ const Filter = (props) => {
           </select>
         </fieldset>
       </form>
-    </div>
+      <Reset handleReset={props.handleReset} />
+    </section>
   );
 };
 
