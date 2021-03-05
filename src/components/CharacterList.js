@@ -23,7 +23,7 @@ const CharacterList = (props) => {
       <ul
         className={`characters__list characters__list--${props.characters.length}`}
       >
-        {characterElements()}{' '}
+        {characterElements()}
       </ul>
     </section>
   );

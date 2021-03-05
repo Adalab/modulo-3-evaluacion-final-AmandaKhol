@@ -23,6 +23,11 @@ const App = () => {
     });
   }, []);
 
+  const handleReset = () => {
+    setCharacterSelect('');
+    setSpeciesSelect('all');
+  };
+
   const handleSelect = (inputId, inputValue) => {
     inputId === 'species'
       ? setSpeciesSelect(inputValue)
@@ -72,6 +77,7 @@ const App = () => {
             <Browser
               inputValue={characterSelect}
               handleSelect={handleSelect}
+              handleReset={handleReset}
               characters={filterCharacters}
               species={speciesListUnique}
               speciesSelect={speciesSelect}

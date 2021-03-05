@@ -11,9 +11,13 @@
 .characters__list {
   box-sizing: border-box;
   padding: 0 45px;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(186px, 1fr));
   grid-gap: 10px;
+  @include tablet() {
+    max-width: 768px;
+  }
   @include desktop() {
     max-width: 1300px;
   }

@@ -14,26 +14,35 @@
     color: $color-font;
     width: 80px;
     position: relative;
-    left: calc(300px / 2);
+    left: calc(230px / 2);
     margin-bottom: 5px;
     text-align: right;
+    @include tablet() {
+      left: calc(300px / 2);
+    }
   }
 
   &__card {
     background-color: $color-secondary;
-    width: 380px;
+    width: 310px;
     box-sizing: border-box;
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
-    padding: 15px;
+    padding: 10px;
+    @include tablet() {
+      width: 380px;
+    }
 
     &--info {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding-left: 30px;
+      padding-left: 10px;
       font-weight: bold;
+      @include tablet() {
+        padding-left: 30px;
+      }
     }
     &--span {
       font-weight: 400;

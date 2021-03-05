@@ -19,6 +19,7 @@ const Browser = (props) => {
     <section className="browser">
       <Filter
         handleSelect={props.handleSelect}
+        handleReset={props.handleReset}
         inputValue={props.inputValue}
         species={props.species}
         speciesSelect={props.speciesSelect}
