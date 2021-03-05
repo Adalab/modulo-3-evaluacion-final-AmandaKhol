@@ -41,6 +41,7 @@ const Filter = (props) => {
             name="species"
             id="species"
             onChange={handleChange}
+            value={props.speciesSelect}
           >
             <option value="all">-</option>
             {renderSpeciesOptions()}

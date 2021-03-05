@@ -74,6 +74,7 @@ const App = () => {
               handleSelect={handleSelect}
               characters={filterCharacters}
               species={speciesListUnique}
+              speciesSelect={speciesSelect}
             />
           </Route>
           <Route path="/detail/:id" render={renderCharacter} />
