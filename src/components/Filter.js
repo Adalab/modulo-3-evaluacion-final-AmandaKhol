@@ -8,8 +8,29 @@ const Filter = (props) => {
     return props.handleSelect(ev.target.id, ev.target.value);
   };
 
+  const handleCheck = (ev) => {
+    return props.handleLocation(ev.target.value);
+  };
+
   const handleSubmit = (ev) => {
     ev.preventDefault();
+  };
+
+  const renderLocationsOptions = () => {
+    return props.locations.map((location, index) => {
+      return (
+        <label key={index} className="input-location">
+          <input
+            type="checkbox"
+            name="location"
+            value={location}
+            onChange={handleCheck}
+            checked={props.locationSelect.includes(location)}
+          />
+          {location}
+        </label>
+      );
+    });
   };
 
   const renderSpeciesOptions = () => {
@@ -48,6 +69,10 @@ const Filter = (props) => {
             <option value="all">-</option>
             {renderSpeciesOptions()}
           </select>
+        </fieldset>
+        <fieldset>
+          <label htmlFor="location">Select the location:</label>
+          {renderLocationsOptions()}
         </fieldset>
       </form>
       <Reset handleReset={props.handleReset} />

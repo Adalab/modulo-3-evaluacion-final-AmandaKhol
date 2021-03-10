@@ -20,9 +20,12 @@ const Browser = (props) => {
       <Filter
         handleSelect={props.handleSelect}
         handleReset={props.handleReset}
+        handleLocation={props.handleLocation}
         inputValue={props.inputValue}
         species={props.species}
         speciesSelect={props.speciesSelect}
+        locations={props.locations}
+        locationSelect={props.locationSelect}
       />
       {renderCharacterListOrWarning()}
     </section>

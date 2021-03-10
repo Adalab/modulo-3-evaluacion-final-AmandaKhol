@@ -13,6 +13,7 @@ const App = () => {
   const [characters, setCharacters] = useState([]);
   const [characterSelect, setCharacterSelect] = useState('');
   const [speciesSelect, setSpeciesSelect] = useState('all');
+  const [locationSelect, setLocationSelect] = useState([]);
 
   useEffect(() => {
     getDataFromApi().then((data) => {
@@ -28,6 +29,18 @@ const App = () => {
     setSpeciesSelect('all');
   };
 
+  const handleLocation = (inputValue) => {
+    const indexCity = locationSelect.indexOf(inputValue);
+    if (indexCity === -1) {
+      const newCities = [...locationSelect, inputValue];
+      setLocationSelect(newCities);
+    } else {
+      const newCities = [...locationSelect];
+      newCities.splice(indexCity, 1);
+      setLocationSelect(newCities);
+    }
+  };
+
   const handleSelect = (inputId, inputValue) => {
     inputId === 'species'
       ? setSpeciesSelect(inputValue)
@@ -37,13 +50,25 @@ const App = () => {
   const speciesList = characters.map((character) => character.species);
   const speciesListUnique = [...new Set(speciesList)];
 
+  const locationList = characters.map((character) => character.origin);
+  const locationListUnique = [...new Set(locationList)];
+
   const filterCharacters = characters
     .filter((character) =>
       character.name.toLowerCase().includes(characterSelect.toLowerCase())
     )
     .filter((character) =>
       speciesSelect === 'all' ? true : character.species === speciesSelect
-    );
+    )
+    .filter((character) => {
+      console.log(locationSelect);
+      console.log(character);
+      if (locationSelect.length === 0) {
+        return true;
+      } else {
+        return locationSelect.includes(character.origin);
+      }
+    });
 
   const renderCharacter = (routerProps) => {
     const routerCharacterId = routerProps.match.params.id;
@@ -78,9 +103,12 @@ const App = () => {
               inputValue={characterSelect}
               handleSelect={handleSelect}
               handleReset={handleReset}
+              handleLocation={handleLocation}
               characters={filterCharacters}
               species={speciesListUnique}
               speciesSelect={speciesSelect}
+              locations={locationListUnique}
+              locationSelect={locationSelect}
             />
           </Route>
           <Route path="/detail/:id" render={renderCharacter} />
